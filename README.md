@@ -20,4 +20,4 @@ https://github.com/silentarrowz/payroll-react
 
 https://medium.com/valtech-ch/setup-a-rest-api-with-sequelize-and-express-js-fae06d08c0a7
 
-{https://www.mysqltutorial.org/mysql-nodejs/connect/
+https://www.mysqltutorial.org/mysql-nodejs/connect/
