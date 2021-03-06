@@ -1,15 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-        body{
+    body{
   font-family: Calibri, Helvetica, sans-serif;
   background-color: pink;
 }
 .container {
     padding: 50px;
-  background-color: lightblue;
+  /* background-color: lightblue; */
 }
 
 input[type=text], input[type=password], textarea {
@@ -25,8 +31,10 @@ input[type=text]:focus, input[type=password]:focus {
   outline: none;
 }
  div {
-            padding: 10px 0;
-         }
+    /* border: 1px solid black; */
+  padding: 25px 50px;
+  /* background-color: lightblue; */
+}
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
@@ -42,6 +50,20 @@ hr {
   opacity: 0.9;
 }
 .registerbtn:hover {
+  opacity: 1;
+}
+
+.cancelbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+.cancelbtn:hover {
   opacity: 1;
 }
     @-webkit-keyframes animatezoom {
@@ -94,7 +116,9 @@ hr {
     }
     h4{
       font-size: 20px;
-      background-color: #fefbd8;
+      border: 1px solid black;
+     padding: 20px 40px;
+      background-color: #31b318;
     }
     h1 {text-align: center;}
     h2 {text-align: center;}
@@ -105,38 +129,43 @@ hr {
 </head>
 <body>
 
-<h4> <pre>MyEmployeeManager                                                                                                          Home    logout</pre></h4>
-<h1>Welcome Admin</h1>
+    <h4> <pre>MyEmployeeManager                                                                                                              Home           logout</pre></h4>
 
-<!-- <br></br>
-<br></br>
-<br></br>
-<br></br> -->
+    <h1>Welcome Admin</h1>
+    <br>
+    <br>
+    <br>
 
-<h2>Department Details</h2>
-<form >
-    <div class="container">
-
-        <label> City </label>    
-        <input type="text" name="city" placeholder="City" size="15"required />
-        <input type="submit" value="Submit">
-        <input type="reset" value="Reset">
-    </div>
-</form>
-
-
-
-<script>
-// Get the modal
-var modal = document.getElementById('id01');
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+    <h2><b>Department Details</b></h2>
+    <form >
+        <div class="container">
+    
+            <label><b>Department Name</b> </label>    
+            <input type="text" name="city" placeholder="New Department Name" size="15"required />
+        </div>
+        <div class="row">
+            <div class="col">
+            <button type="submit" class="registerbtn">Add Department</button> 
+        </div>
+        <div class="col">
+            <button type="clear" class="cancelbtn">Cancel</button> 
+        </div>
+        </div>
+    </form>
+    
+    
+    
+    <script>
+    // Get the modal
+    var modal = document.getElementById('id01');
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
-}
-</script>
-
-</body>
-</html>
+    </script>
+    
+    </body>
+    </html>
