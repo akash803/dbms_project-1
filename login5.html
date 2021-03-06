@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
     body{
@@ -9,7 +15,7 @@
 }
 .container {
     padding: 50px;
-  background-color: lightblue;
+  /* background-color: lightblue; */
 }
 
 input[type=text], input[type=password], textarea {
@@ -25,8 +31,10 @@ input[type=text]:focus, input[type=password]:focus {
   outline: none;
 }
  div {
-            padding: 10px 0;
-         }
+    /* border: 1px solid black; */
+  padding: 25px 50px;
+  /* background-color: lightblue; */
+}
 hr {
   border: 1px solid #f1f1f1;
   margin-bottom: 25px;
@@ -44,6 +52,21 @@ hr {
 .registerbtn:hover {
   opacity: 1;
 }
+
+.cancelbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+.cancelbtn:hover {
+  opacity: 1;
+}
+
     @-webkit-keyframes animatezoom {
       from {-webkit-transform: scale(0)} 
       to {-webkit-transform: scale(1)}
@@ -94,7 +117,9 @@ hr {
     }
     h4{
       font-size: 20px;
-      background-color: #fefbd8;
+      border: 1px solid black;
+     padding: 20px 40px;
+      background-color: #31b318;
     }
     h1 {text-align: center;}
     h2 {text-align: center;}
@@ -105,43 +130,89 @@ hr {
 </head>
 <body>
 
+
 <h4> <pre>MyEmployeeManager                                                                                                          Home    logout</pre></h4>
 <h1>Welcome Admin</h1>
 
 <form>  
     <div class="container">  
-    <center>  <h2>Grade Details</h2> </center>  
+    <center>  <h2><b>Grade Details</b></h2> </center>  
     <hr>  
-    <label> Grade Name </label>   
-  <input type="text" name="gradename" placeholder= "Enter Grade Name.." size="15" required />   
-  <label> Grade Short Name </label>   
-  <input type="text" name="gradeshortname" placeholder="Enter Grade Short Name.." size="15" required />   
-  <!-- Current Address :  
-  <textarea cols="80" rows="5" placeholder="Current Address" value="address" required>  
-  </textarea>   -->
-  <label><b>Basic</b></label>    
-  <input type="text" name="basic" placeholder="Enter Basic.." size="15"required />   
-  <label> Dearness Allowance </label>    
-  <input type="text" name="dearnessallowance" placeholder="Enter Dearness Allowance.." size="15"required />   
-  <label> Travel Allowance </label>    
-  <input type="text" name="travelallowance" placeholder="Enter Travel Allowance.." size="15"required />   
-  <label> Medical Allowance </label>    
-  <input type="text" name="medicalallowance" placeholder="Enter Medical Allowance.." size="15"required />   
 
-  <label> HRA </label>    
+    <div class="row">
+        <div class="col">
+  <label> <b>Grade Name</b> </label>   
+  <input type="text" name="gradename" placeholder= "Enter Grade Name.." size="15" required />   
+</div>
+<div class="col">
+  <label> <b>Grade Short Name</b> </label>   
+  <input type="text" name="gradeshortname" placeholder="Enter Grade Short Name.." size="15" required />   
+</div>
+</div>
+
+<div class="row">
+    <div class="col">
+  <label><b>Basic</b></label>    
+  <input type="text" name="basic" placeholder="Enter Basic.." size="15"required />  
+</div>
+<div class="col">
+  <label> <b>Dearness Allowance</b> </label>    
+  <input type="text" name="dearnessallowance" placeholder="Enter Dearness Allowance.." size="15"required />   
+</div>
+</div>
+ 
+
+<div class="row">
+    <div class="col">
+  <label> <b>Travel Allowance</b> </label>    
+  <input type="text" name="travelallowance" placeholder="Enter Travel Allowance.." size="15"required />   
+</div>
+<div class="col">
+  <label><b> Medical Allowance</b> </label>    
+  <input type="text" name="medicalallowance" placeholder="Enter Medical Allowance.." size="15"required />   
+</div>
+</div>
+ 
+<div class="row">
+    <div class="col">
+  <label> <b> HRA </b></label>    
   <input type="text" name="hra" placeholder="Enter HRA.." size="15"required />   
-  <label> Bonus </label>    
+</div>
+<div class="col">
+  <label> <b>Bonus</b> </label>    
   <input type="text" name="Bonus" placeholder="Enter Bonus.." size="15"required />
-  <label> HRA </label>    
+</div>
+</div>
+
+
+  <div class="row">
+    <div class="col">
+  <label> <b>HRA</b> </label>    
   <input type="text" name="hra" placeholder="Enter HRA.." size="15"required /> 
+</div>
+<div class="col">
   <label><b>Provident Fund</b></label>    
   <input type="text" name="providentfund" placeholder="Enter Provident Fund.." size="15"required />
+</div>
+</div>
+
+
+  
+  <div class="row">
+    <div class="col">
   <label><b>Professional Tax</b></label>    
   <input type="text" name="professionaltax" placeholder="Enter Professional Tax.." size="7"required />           
-      <!-- <button type="submit" class="registerbtn"><b>Add Grade</b></button> 
-      <button type="reset" class="resetbtn"><b>Clear</b></button>  -->
-      <input type="submit" value="Submit">
-      <input type="reset" value="Reset">
+</div>
+</div>
+
+<div class="row">
+    <div class="col">
+    <button type="submit" class="registerbtn">Submit</button> 
+</div>
+<div class="col">
+    <button type="clear" class="cancelbtn">Clear</button> 
+</div>
+</div>
   </form>  
 
 <script>
