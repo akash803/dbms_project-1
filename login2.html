@@ -103,8 +103,8 @@ hr {
       transform: translate(-50%, -50%);
     }
     body  {
-  background-image: url("img1.jpg");
-  background-color: #b9bb4c;
+  background-image: url("img12.jpg");
+  background-size: cover;  background-color: #b9bb4c;
 }
     h1 {
       font-size: 50px;
@@ -119,13 +119,16 @@ hr {
       font-size: 20px;
       border: 1px solid black;
      padding: 20px 40px;
-      background-color: #a70a8c;
+      /*background-color: #00FFFF;*/
+      background-color:black;
+      color : white;
     }
     h1 {text-align: center;}
     h2 {text-align: center;}
     h3 {text-align: center;}
     p {text-align: center;}
     div {text-align: center;}
+     a{padding-right:  5px; color : white;}
 </style>
 </head>
 <body>
@@ -133,8 +136,18 @@ hr {
     
     
 
-<h4> <pre>MyEmployeeManager                                                                                                          Home    logout</pre></h4>
-<h1>Welcome Admin</h1>
+<h4><!-- <pre style="text-align:left"> -->
+  MyEmployeeManager 
+  <a href = "login1.html" style = "float : right">
+    Logout 
+  </a>
+  <a href = "login2.html"  style = "float : right" >
+    Home    
+  </a>
+  <!-- <pre></pre> -->
+  
+<!-- </pre> -->
+</h4> 
 <br></br>
 <br></br>
 <br></br>
@@ -143,22 +156,22 @@ hr {
 
 <div class="container">
   <div class="center">
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;text-align: center;">Add New Employee</button>
+      <button onclick="location.href = 'login3.html'" style="width:auto;text-align: center;">Add New Employee</button>
       <br>
       <br>
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;text-align: center;">Add New Department</button>
+      <button onclick="location.href = 'login4.html'"style="width:auto;text-align: center;">Add New Department</button>
       <br>
       <br>
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;text-align: center;">Add New Grade</button>
+      <button onclick="location.href = 'login5.html'"style="width:auto;text-align: center;">Add New Grade</button>
       <br>
       <br>
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;text-align: center;">Employee Grade Details</button>
+      <button onclick="location.href = 'login5.html'" style="width:auto;text-align: center;">Employee Grade Details</button>
       <br>
       <br>
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;text-align: center;">Prepare Monthly Salary</button>
+      <button onclick="location.href = 'login6.html'" style="width:auto;text-align: center;">Prepare Monthly Salary</button>
       <br>
       <br>
-      <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;text-align: center;">Generate Report</button>
+      <button onclick="location.href = 'login7.html'" style="width:auto;text-align: center;">Generate Report</button>
     </div>
 </div>
 
