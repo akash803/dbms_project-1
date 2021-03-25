@@ -15,7 +15,6 @@
 }
 .container {
     padding: 50px;
-  /* background-color: lightblue; */
 }
 
 input[type=text], input[type=password], textarea {
@@ -31,9 +30,8 @@ input[type=text]:focus, input[type=password]:focus {
   outline: none;
 }
  div {
-    /* border: 1px solid black; */
   padding: 25px 50px;
-  /* background-color: lightblue; */
+ 
 }
 hr {
   border: 1px solid #f1f1f1;
@@ -62,7 +60,6 @@ hr {
       to {transform: scale(1)}
     }
     
-    /* Change styles for span and cancel button on extra small screens */
     @media screen and (max-width: 300px) {
       span.psw {
          display: block;
@@ -89,7 +86,7 @@ hr {
     }
     body  {
   background-image: url("./images/img9.jpg");
-  /*background-size: cover;*/
+  
   background-color: #b9bb4c;
   color : white;
 }
@@ -106,7 +103,7 @@ hr {
       font-size: 20px;
       border: 1px solid black;
      padding: 20px 40px;
-      /*background-color: #00FFFF;*/
+     
       background-color:black;
       color : white;
     }
@@ -121,7 +118,7 @@ hr {
 </head>
 <body>
 
-<h4><!-- <pre style="text-align:left"> -->
+<h4>
   MyEmployeeManager 
   <a href = "login1.html" style = "float : right">
     Logout 
@@ -129,9 +126,7 @@ hr {
   <a href = "login2.html"  style = "float : right" >
     Home    
   </a>
-  <!-- <pre></pre> -->
-  
-<!-- </pre> -->
+
 </h4> 
 <h1><b>Add New Employee</b></h1>
 
@@ -179,7 +174,7 @@ hr {
     Phone :  
     </label>  
     <input type="text" name="country code" placeholder="Country Code"  value="+91" size="10"/ required>   
-    <!-- <input type="text" name="phone" placeholder="phone no." size="10"/ required>   -->
+  
 </div>
 <div class="col">
     <label for="email"><b>Email</b></label>  
@@ -200,17 +195,12 @@ hr {
     </div>
 </div> 
     </form> 
-      
-  
-   
       <button type="submit" class="registerbtn">Register</button>  
   </form>  
 
 <script>
-// Get the modal
 var modal = document.getElementById('id01');
 
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
