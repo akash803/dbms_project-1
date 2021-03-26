@@ -140,7 +140,6 @@ span.psw {
   background-image: url("./images/img17.jpg");
   background-size: cover;
   color :#98FB98;
-  /* background-color: #b9bb4c; */
 }
 </style>
 </head>
@@ -149,16 +148,13 @@ span.psw {
 <center>
 </br></br>
 <h3><strong>Welcome</strong></h3>
-<!-- </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br> -->
-<!-- <h1><strong>My Employee Manager</strong></h1> -->
 <br>
-<!-- <h1><STRONG>Administrator Login</STRONG></h1> -->
 <button onclick="document.getElementById('id01').style.display='block'" class="button big-btn" style="width:10%; font-size :
 20px;"><strong>Login</strong></button>
 </center>
 <div id="id01" class="modal">
 
- <form class="modal-content animate" name="form1" method="post" action="">
+ <form class="modal-content animate" name="form1" action="./login1.html" method="post">
     <div class="imgcontainer">
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
         <img src="./images/avatar.jpg" alt="Avatar" class="avatar">
@@ -169,7 +165,7 @@ span.psw {
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="password" id="password" required>
        
-        <button type="submit" name="submit" id="submit" value="Login">Login</button>
+        <button type="submit" name="submit" id="submit" value="login">Login</button>
 
         </div>
         <div class="container" style="background-color:#f1f1f1">
@@ -178,50 +174,3 @@ span.psw {
         </div>
         </form>
        </div>
-       <!-- <div id="id02" class="modal">
-        <form class="modal-content animate" method="post" action="">
-            <div class="imgcontainer">
-            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-           
-            </div>
-            <div class="container">
-            <label for="uname"><b>Enter Your Email id</b></label>
-            <input type="text" placeholder="Enter Username" name="username" id="username" required>
-           
-            <input type="submit" name="submi" value="Submit">
-           
-            </div>
-           
-            </form>
-           </div> -->
-           <script>
-           // Get the modal
-          //  var modal = document.getElementById('id01');
-          //  var modal = document.getElementById('id02');
-          //  // When the user clicks anywhere outside of the modal, close it
-          //  window.onclick = function(event) { 
-          //   if (event.target == modal) {
-          //   modal.style.display = "none";
-          //   }
-          // }
-
-            // const loginForm = document.getElementById("id01");
-            const loginButton = document.getElementById("submit");
-            // const loginErrorMsg = document.getElementById("login-error-msg");
-
-            loginButton.addEventListener("click", (e) => {
-                e.preventDefault();
-                const username = document.getElementById("username").value;
-                const password = document.getElementById("password").value;
-
-                if (username === "user" && password === "user") {
-                    alert("You have successfully logged in.");
-                    window.location.href = "login2.html";
-                } else {
-                    alert("Get lost you hacker!");
-                    loginErrorMsg.style.opacity = 1;
-                    window.location.reload();
-                }
-              })
-
-           </script>       
