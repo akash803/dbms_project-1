@@ -16,10 +16,11 @@ app.use(express.json());       // to support JSON-encoded bodies
 app.use(express.urlencoded()); // to support URL-encoded bodies
 
 //MYSQL
+//Remember to add your own data!!!!!!!!!!!!!
 var con=mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: "17pranav29",
+  user: "ZerothKing",
+  password: "whyareyoulookinghere",
   database: "project"
 });
 
@@ -28,7 +29,7 @@ const { nextTick } = require('process');
 let port = 8000;
 httpServer = http.Server(app);
 console.log(__dirname);
-//app.use(express.static(__dirname + '/images'));
+app.use(express.static(__dirname + '/images'));
 
 app.get('/login1.html', function(req, res) {
   res.sendFile(__dirname + '/login1.html');
