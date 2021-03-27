@@ -5,7 +5,7 @@ create table admin(
 	admin_id int primary key,
     admin_name varchar(100),
     password varchar(100),
-    email_id varchar(100)
+    --email_id varchar(100)
 );
 
 create table dept(
@@ -16,6 +16,7 @@ create table dept(
 create table grade(
 	grade_id int primary key auto_increment,
     grade_name varchar(100) ,
+    grade_short_name varchar(30),
     grade_basic int ,
     grade_ta int ,
     grade_da int ,
@@ -28,14 +29,14 @@ create table grade(
 );
 
 create table employee(
-	emp_id int primary key,
+	emp_id int primary key auto_increment;
     emp_title varchar(100) ,
     emp_name varchar(100) ,
     emp_dob date,
-    emp_doj date,
     emp_city varchar(100),
     emp_pincode int,
-    emp_mobile_number int,
+    emp_mobile_number char(10);
+    emp_pancard_number char(10),
     emp_state varchar(100),
     emp_mail_id varchar(100) unique
 );
@@ -44,8 +45,8 @@ create table emp_grade(
 	emp_id int unique,
     emp_dept_id int ,
     emp_grade_id int ,
-    emp_from_date date ,
-    emp_to_date date ,
+    -- emp_from_date date ,
+    -- emp_to_date date ,
     foreign key (emp_id) references employee(emp_id),
     foreign key (emp_dept_id) references dept(dept_id),
     foreign key (emp_grade_id) references grade(grade_id),
