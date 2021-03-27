@@ -168,25 +168,3 @@ span.psw {
         </div>
         </form>
        </div>
-   
-           <script>
-         
-            const loginButton = document.getElementById("submit");
-
-
-            loginButton.addEventListener("click", (e) => {
-                e.preventDefault();
-                const username = document.getElementById("username").value;
-                const password = document.getElementById("password").value;
-
-                if (username === "user" && password === "user") {
-                    alert("You have successfully logged in.");
-                    window.location.href = "login2.html";
-                } else {
-                    alert("Get lost you hacker!");
-                    loginErrorMsg.style.opacity = 1;
-                    window.location.reload();
-                }
-              })
-
-           </script>       
