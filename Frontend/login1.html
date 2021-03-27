@@ -4,7 +4,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
-/* Full-width input fields */
 input[type=text], input[type=password] {
  width: 100%;
  padding: 12px 20px;
@@ -13,7 +12,6 @@ input[type=text], input[type=password] {
  border: 1px solid #ccc;
  box-sizing: border-box;
 }
-/* Set a style for all buttons */
 button {
  background-color: #4CAF50;
  color: white;
@@ -26,13 +24,11 @@ button {
 button:hover {
  opacity: 0.8;
 }    
-/* Extra styles for the cancel button */
 .cancelbtn {
  width: auto;
  padding: 10px 18px;
  background-color: #f44336;
 }
-/* Center the image and position the close button */
 .imgcontainer {
  text-align: center;
  margin: 24px 0 12px 0;
@@ -49,28 +45,26 @@ span.psw {
  float: right;
  padding-top: 16px;
 }
-/* The Modal (background) */
+
 .modal {
- display: none; /* Hidden by default */
- position: fixed; /* Stay in place */
- z-index: 1; /* Sit on top */
+ display: none; 
+ position: fixed; 
+ z-index: 1; 
  left: 0;
  top: 0;
- width: 100%; /* Full width */
- height: 100%; /* Full height */
- overflow: auto; /* Enable scroll if needed */
- background-color: rgb(0,0,0); /* Fallback color */
- background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+ width: 100%; 
+ height: 100%; 
+ overflow: auto; 
+ background-color: rgb(0,0,0); 
+ background-color: rgba(0,0,0,0.4); 
  padding-top: 60px;
 }
-/* Modal Content/Box */
 .modal-content {
  background-color: #fefefe;
- margin: 2% auto 10% auto; /* 5% from the top, 15% from the bottom and centered */
+ margin: 2% auto 10% auto; 
  border: 1px solid #888;
- width: 40%; /* Could be more or less, depending on screen size */
+ width: 40%;
 }
-/* The Close Button (x) */
 .close {
  position: absolute;
  right: 25px;
@@ -84,7 +78,6 @@ span.psw {
  color: red;
  cursor: pointer;
 }
-/* Add Zoom Animation */
 .animate {
  -webkit-animation: animatezoom 0.6s;
  animation: animatezoom 0.6s
@@ -98,7 +91,6 @@ span.psw {
  from {transform: scale(0)}
  to {transform: scale(1)}
 }
-/* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
  span.psw {
  display: block;
@@ -140,7 +132,6 @@ span.psw {
   background-image: url("./images/img17.jpg");
   background-size: cover;
   color :#98FB98;
-  /* background-color: #b9bb4c; */
 }
 </style>
 </head>
@@ -149,16 +140,15 @@ span.psw {
 <center>
 </br></br>
 <h3><strong>Welcome</strong></h3>
-<!-- </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br> -->
-<!-- <h1><strong>My Employee Manager</strong></h1> -->
+
 <br>
-<!-- <h1><STRONG>Administrator Login</STRONG></h1> -->
+
 <button onclick="document.getElementById('id01').style.display='block'" class="button big-btn" style="width:10%; font-size :
 20px;"><strong>Login</strong></button>
 </center>
 <div id="id01" class="modal">
 
- <form class="modal-content animate" name="form1" method="post" action="">
+ <form class="modal-content animate" name="form1" action="./login1.html" method="post">
     <div class="imgcontainer">
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
         <img src="./images/avatar.jpg" alt="Avatar" class="avatar">
@@ -169,7 +159,7 @@ span.psw {
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="password" id="password" required>
        
-        <button type="submit" name="submit" id="submit" value="Login">Login</button>
+        <button type="submit" name="submit" id="submit" value="login">Login</button>
 
         </div>
         <div class="container" style="background-color:#f1f1f1">
@@ -178,50 +168,3 @@ span.psw {
         </div>
         </form>
        </div>
-       <!-- <div id="id02" class="modal">
-        <form class="modal-content animate" method="post" action="">
-            <div class="imgcontainer">
-            <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-           
-            </div>
-            <div class="container">
-            <label for="uname"><b>Enter Your Email id</b></label>
-            <input type="text" placeholder="Enter Username" name="username" id="username" required>
-           
-            <input type="submit" name="submi" value="Submit">
-           
-            </div>
-           
-            </form>
-           </div> -->
-           <script>
-           // Get the modal
-          //  var modal = document.getElementById('id01');
-          //  var modal = document.getElementById('id02');
-          //  // When the user clicks anywhere outside of the modal, close it
-          //  window.onclick = function(event) { 
-          //   if (event.target == modal) {
-          //   modal.style.display = "none";
-          //   }
-          // }
-
-            // const loginForm = document.getElementById("id01");
-            const loginButton = document.getElementById("submit");
-            // const loginErrorMsg = document.getElementById("login-error-msg");
-
-            loginButton.addEventListener("click", (e) => {
-                e.preventDefault();
-                const username = document.getElementById("username").value;
-                const password = document.getElementById("password").value;
-
-                if (username === "user" && password === "user") {
-                    alert("You have successfully logged in.");
-                    window.location.href = "login2.html";
-                } else {
-                    alert("Get lost you hacker!");
-                    loginErrorMsg.style.opacity = 1;
-                    window.location.reload();
-                }
-              })
-
-           </script>       

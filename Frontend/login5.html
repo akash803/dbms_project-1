@@ -136,7 +136,7 @@ hr {
 <body>
 
 
-<h4><!-- <pre style="text-align:left"> -->
+<h4>
   MyEmployeeManager 
   <a href = "login1.html" style = "float : right">
     Logout 
@@ -144,9 +144,7 @@ hr {
   <a href = "login2.html"  style = "float : right" >
     Home    
   </a>
-  <!-- <pre></pre> -->
-  
-<!-- </pre> -->
+
 </h4> 
 <h1><b>Add New Grade</b></h1>
 
@@ -203,21 +201,12 @@ hr {
 
   <div class="row">
     <div class="col">
-  <label> <b>HRA</b> </label>    
-  <input type="text" name="hra" placeholder="Enter HRA.." size="15"required /> 
+      <label><b>Professional Tax</b></label>    
+      <input type="text" name="professionaltax" placeholder="Enter Professional Tax.." size="7"required />           
 </div>
 <div class="col">
   <label><b>Provident Fund</b></label>    
   <input type="text" name="providentfund" placeholder="Enter Provident Fund.." size="15"required />
-</div>
-</div>
-
-
-  
-  <div class="row">
-    <div class="col">
-  <label><b>Professional Tax</b></label>    
-  <input type="text" name="professionaltax" placeholder="Enter Professional Tax.." size="7"required />           
 </div>
 </div>
 
@@ -232,10 +221,10 @@ hr {
   </form>  
 
 <script>
-// Get the modal
+
 var modal = document.getElementById('id01');
 
-// When the user clicks anywhere outside of the modal, close it
+
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
