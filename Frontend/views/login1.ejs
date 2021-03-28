@@ -142,13 +142,12 @@ span.psw {
 <h3><strong>Welcome</strong></h3>
 
 <br>
-
 <button onclick="document.getElementById('id01').style.display='block'" class="button big-btn" style="width:10%; font-size :
 20px;"><strong>Login</strong></button>
 </center>
 <div id="id01" class="modal">
 
- <form class="modal-content animate" name="form1" action="./login1.html" method="post">
+ <form class="modal-content animate" name="form1" action="login1" method="post">
     <div class="imgcontainer">
         <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
         <img src="./avatar.jpg" alt="Avatar" class="avatar">
@@ -168,3 +167,9 @@ span.psw {
         </div>
         </form>
        </div>
+
+<script> 
+    <% if (signupRequest == 'Error') { %> 
+          window.alert('Wrong Username or password!!');
+    <% } %>  
+</script>

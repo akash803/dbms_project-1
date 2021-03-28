@@ -134,17 +134,17 @@ hr {
 
 <h4>
   MyEmployeeManager 
-  <a href = "login1.html" style = "float : right">
+  <a href = "login1" style = "float : right">
     Logout 
   </a>
-  <a href = "login2.html"  style = "float : right" >
+  <a href = "login2"  style = "float : right" >
     Home    
   </a>
 
 </h4> 
 <h1><b>Add New Employee</b></h1>
 
-<form>  
+<form name="form3" action="login3" method="post">  
     <div class="container">  
     <center>  <h2> <b>Employee Details</b></h2> </center>  
     <hr> 
@@ -199,7 +199,7 @@ hr {
 <div class="row">
   <div class="col">
     <label ><b>Date Of Birth</b></label>
-    <input type="text" name="DOB" placeholder="DD/MM/YYYY" size="10"/ required>
+    <input type="date" name="DOB" placeholder="DD/MM/YYYY" size="10"/ required>
 </div>
 <div class="col">
     <label ><b>Pan Card no.</b></label>
@@ -218,13 +218,12 @@ hr {
   </form>  
 
 <script>
-var modal = document.getElementById('id01');
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
+ <% if (error == 'Error') { %> 
+          window.alert('Wrong Data Inserted. Please Recheck');
+    <% } %> 
+  <% if (error == 'Done') { %> 
+          window.alert('Inserted the data!!');
+    <% } %> 
 </script>
 
 </body>
