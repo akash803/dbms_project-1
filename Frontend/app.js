@@ -19,9 +19,15 @@ app.use(express.urlencoded()); // to support URL-encoded bodies
 //Remember to add your own data!!!!!!!!!!!!!
 var con=mysql.createConnection({
   host: "localhost",
-  user: "ZerothKing",
-  password: "whyareyoulookinghere",
+  user: "root",
+  password: "",
   database: "project"
+});
+
+con.connect(function(err) {
+  console.log("connecting to database");
+  if(!err) console.log('connected');
+  else console.log('error');
 });
 
 var path = require('path');
@@ -44,38 +50,29 @@ app.post('/login1.html', (req,res) => {
 	pass = req.body.password;
 
   console.log(user+" "+pass);
-
-  con.connect(function(err) {
-
-    console.log("connecting to database");
-    if(!err) console.log('connected');
-
-    con.query("SELECT admin_name,password from admin", function (err, result, fields) {
-      if (err) p="\0";
-      else{
-        console.log(result);
-        var size = Object.keys(result).length;
-        var i;
-
-        for(i =0 ;i<size;i++){
-          console.log(result[i].admin_name+" "+result[i].password);
-          if(result[i].admin_name == user){
-            p = result[i].password;
-            console.log("found");
-            break;
-          }
-        }
-        
-        if (p == pass) {
-          res.sendFile(path.join(__dirname,'login2.html'));
-          return console.log("CORRECT!!!");
-        }
-        else {
-          res.sendFile(path.join(__dirname,'login1.html'));
-          return console.log("WRONG!!!");
+  con.query("SELECT admin_name,password from admin;", function (err, result, fields) {
+    if (err) p="\0";
+    else{
+      console.log(result);
+      var size = Object.keys(result).length;
+      var i;
+      for(i =0 ;i<size;i++){
+        console.log(result[i].admin_name+" "+result[i].password);
+        if(result[i].admin_name == user){
+          p = result[i].password;
+          console.log("found");
+          break;
         }
       }
-    });
+      if (p == pass) {
+        res.sendFile(path.join(__dirname,'login2.html'));
+        return console.log("CORRECT!!!");
+      }
+      else {
+        res.sendFile(path.join(__dirname,'login1.html'));
+        return console.log("WRONG!!!");
+      }
+    }
   });
 });
 
@@ -98,24 +95,21 @@ app.post('/login3.html', (req,res) => {
   pincode = req.body.pincode;
   email = req.body.email;
   dob = req.body.DOB;
-  //fontend pancardno = req.body.pancardno;
-  // frontend addr = req.body.address;
-  // frontend phone = req.body.phone;
+  pancardno = req.body.pancardno;
+  addr = req.body.address;
+  phone = req.body.phone;
 
-  con.connect(function(err) {
-
-    console.log("connecting to database");
-    if(!err) console.log('connected');
-
-    con.query("INSERT INTO employee values ("+title+","+name+","+dob+","+address+","+city+","+state+","+pincode+","+phone+","+pancardno+","+email+")", function (err, result, fields) {
-      if (err){
-        // what should we do?
-      }
-      else{
-        // again, do what?
-        console.log(result);
-      }
-    });
+  var sql = "INSERT INTO employee(emp_title,emp_name,emp_dob,emp_address,emp_city,emp_state,emp_pincode,emp_mobile_number,emp_pancard_number,emp_mail_id) values ('"+title+"','"+name+"','"+dob+"','"+address+"','"+city+"','"+state+"',"+pincode+",'"+phone+"','"+pancardno+"','"+email+"');"
+  console.log(sql);
+  con.query(sql, function (err, result, fields) {
+    if (err){
+      // what should we do?
+    }
+    else{
+      // again, do what?
+      res.sendFile(os.join(__dirname,'login3.html'));
+      console.log("inserted row");
+    }
   });
 });
 
@@ -126,22 +120,21 @@ app.get('/login4.html', function(req, res) {
 app.post('/login4.html', (req,res) => {
 	console.log("NO ERROR!!");
 
-  // frontend var dept_name = req.body.dept_name;
+  var dept_name = req.body.dept_name;
+  console.log(dept_name);
 
-  con.connect(function(err) {
+  var sql = "INSERT INTO dept(dept_name) values ('"+dept_name+"');"
+  console.log(sql);
 
-    console.log("connecting to database");
-    if(!err) console.log('connected');
-
-    con.query("INSERT INTO dept values ("+dept_name+")", function (err, result, fields) {
-      if (err){
-        // do what?
-      }
-      else{
-        // do what?
-        console.log(result);
-      }
-    });
+  con.query(sql, function (err, result) {
+    if (err){
+      // do what?
+    }
+    else{
+      // do what?
+      console.log("record inserted");
+      res.sendFile(path.join(__dirname,'login4.html'));
+    }
   });
 });
 
@@ -159,19 +152,20 @@ app.post('/login5.html',(req,res)=>{
   var ta = req.body.travelallowance;
   var ma = req.body.medicalallowance;
   var hra = req.body.hra;
-  var bonus = req.body.bonus;
+  var bonus = req.body.Bonus;
   var pt = req.body.professionaltax;
   var pf = req.body.providentfund;
 
-  con.connect(function(err){
-
-    console.log("connecting to database");
-    if(!err) console.log('connected');
-    
-    con.query("INSERT INTO grade values ("+name+","+shortname+","+basic+","+ta+","+da+","+hra+","+ma+","+bonus+","+pf+","+pt+")",function(err,result,fields){
-      if (err) res.sendFile(path.join(__dirname+'login5.html'));
-      else console.log(result);
-    });
+  var sql = "INSERT INTO grade(grade_name,grade_short_name,grade_basic,grade_ta,grade_da,grade_hra,grade_ma,grade_bonus,grade_pf,grade_pt) values ('"+name+"','"+shortname+"',"+basic+","+ta+","+da+","+hra+","+ma+","+bonus+","+pf+","+pt+");";
+  console.log(sql);
+  con.query(sql,function(err,result,fields){
+    if (err){
+      // do what?
+    }
+    else{
+      res.sendFile(path.join(__dirname,'login5.html'));
+      console.log('inserted row');
+    }
   });
 });
 
@@ -182,15 +176,10 @@ app.get('/login7.html', function(req, res) {
 app.post('/login7.html',(req,res)=>{
   console.log("NO ERROR!!");
 
-  // frontend var e_id = req.body.e_id;
+  var e_id = req.body.e_id;
+  console.log(e_id);
 
-  con.connect(function(err){
-
-    console.log("connecting to database");
-    if(!err) console.log('connected');
-
-    con.query();
-  });
+  var sql1 = "SELECT * FROM dept join (emp_grade join grade on emp_grade.emp_grade_id = grade.grade_id) on emp_grade.emp_dept_id = dept.dept_id where emp_id = "+e_id+";";
 });
 
 app.get('/login8.html', function(req, res) {
@@ -200,24 +189,24 @@ app.get('/login8.html', function(req, res) {
 app.post('/login8.html',function(req,res){
   console.log("NO ERROR!!");
 
-  // frontend var e_id = req.body.e_id;
-  // frontend var d_id = req.body.d_id;
-  // frontend var g_id = req.body.g_id;
+  var e_id = req.body.e_id;
+  var d_id = req.body.d_id;
+  var g_id = req.body.g_id;
+  // console.log(e_id);
+  // console.log(d_id);
+  // console.log(g_id);
+  var sql = "INSERT INTO emp_grade values ("+e_id+","+d_id+","+g_id+");"
+  console.log(sql);
 
-  con.connect(function(err){
-
-    console.log("connecting to database");
-    if(!err) console.log('connected');
-
-    con.query("INSERT INTO emp_grade values ("+e_id+","+d_id+","+g_id+")",function(err,result,fields){
-      if (err){
-        // do what?
-      }
-      else{
-        // do what?
-        console.log(result);
-      }
-    });
+  con.query(sql,function(err,result,fields){
+    if (err){
+      // do what?
+    }
+    else{
+      // do what?
+      res.sendFile(path.join(__dirname,'login8.html'));
+      console.log(result);
+    }
   });
 });
 
