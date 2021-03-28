@@ -50,6 +50,20 @@ hr {
 .registerbtn:hover {
   opacity: 1;
 }
+
+.cancelbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+.cancelbtn:hover {
+  opacity: 1;
+}
     @-webkit-keyframes animatezoom {
       from {-webkit-transform: scale(0)} 
       to {-webkit-transform: scale(1)}
@@ -130,26 +144,26 @@ hr {
 </h4> 
 <h1><b>Add New Employee</b></h1>
 
-<form method="POST" action="./login3.html">  
+<form>  
     <div class="container">  
-    <center>  <h2>Employee Details</h2> </center>  
+    <center>  <h2> <b>Employee Details</b></h2> </center>  
     <hr> 
     <div class="row">
         <div class="col">
-    <label> Employee Title </label>   
+    <label> <b>Employee Title</b> </label>   
   <input type="text" name="employeetitle" placeholder= "EmployeeTitle" size="15" required />   
   </div>
   <div class="col">
-  <label> Employee Name </label>   
+  <label> <b>Employee Name</b> </label>   
   <input type="text" name="employeename" placeholder="Employeename" size="15" required />   
   </div>
   </div>
    
   <div class="row">
     <div class="col">
-   <b>Current Address :  </b>
-  <input type="text" size = "50" placeholder="address" value="address" required>  
-    </input>
+   <b>Current Address</b>
+  <input type="text" name="address" placeholder="Enter your Address" style="width: 500px;height: 150px;" / required/>  
+    </input>  
 </div>
 <div class="col">
   <label> <b>City</b></label>    
@@ -163,8 +177,8 @@ hr {
   <input type="text" name="state" placeholder="State" size="15"required /> 
 </div>
 <div class="col">
-  <label> Pincode </label>    
-  <input type="text" name="pincode" placeholder="Pincode" maxlength="7" pattern="\d{7}" title="Please enter exactly 7 digits" / required >  
+  <label> <b>Pincode</b> </label>    
+  <input type="text" name="pincode" placeholder="Pincode" maxlength="6" pattern="\d{6}" title="Please enter exactly 7 digits" / required >  
 </div>
 </div>
   
@@ -178,22 +192,29 @@ hr {
 </div>
 <div class="col">
     <label for="email"><b>Email</b></label>  
-    <input type="text" placeholder="email" name="email" required>
+    <input type="text" placeholder="ex:username@gmail.com" name="email" required>
 </div>
 </div>
     
 <div class="row">
   <div class="col">
-    <label >Date Of Birth</label>
+    <label ><b>Date Of Birth</b></label>
     <input type="text" name="DOB" placeholder="DD/MM/YYYY" size="10"/ required>
 </div>
 <div class="col">
-    <label >Pan Card no.</label>
+    <label ><b>Pan Card no.</b></label>
     <input type="text" name="pancardno" placeholder="Pan Card No." maxlength="10" pattern="\d{10}" title="Please enter exactly 10 digits" / required>
 </div>
 </div> 
-    </form>
-      <button type="submit" class="registerbtn">Register</button>  
+  
+    <div class="row">
+      <div class="col">
+      <button type="submit" class="registerbtn">Submit</button> 
+  </div>
+  <div class="col">
+      <button type="clear" class="cancelbtn">Clear</button> 
+  </div>
+  </div>
   </form>  
 
 <script>
