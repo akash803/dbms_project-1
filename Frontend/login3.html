@@ -147,33 +147,33 @@ hr {
    
   <div class="row">
     <div class="col">
-   <b>Current Address :  </b>
+   <b>Current Address</b>
   <textarea cols="80" rows="5" placeholder="address" value="address" required>  
   </textarea>  
 </div>
 <div class="col">
-  <label> City </label>    
+  <label> <b>City</b></label>    
   <input type="text" name="city" placeholder="City" size="15"required />   
 </div>
 </div>
 
 <div class="row">
     <div class="col">
-  <label> State </label>    
+  <label> <b>State</b> </label>    
   <input type="text" name="state" placeholder="State" size="15"required /> 
 </div>
 <div class="col">
   <label> Pincode </label>    
-  <input type="text" name="pincode" placeholder="Pincode" size="7"required />  
+  <input type="text" name="pincode" placeholder="Pincode" maxlength="7" pattern="\d{7}" title="Please enter exactly 7 digits" / required >  
 </div>
 </div>
   
 <div class="row">
     <div class="col">
   <label>   
-    Phone :  
+    <b>Phone</b>  
     </label>  
-    <input type="text" name="phone" placeholder="Country Code"  value="+91" size="10"/ required>   
+    <input type="text" name="phone" placeholder="Enter your Contact number"  maxlength="10" pattern="\d{10}" title="Please enter exactly 10 digits" / required>   
   
 </div>
 <div class="col">
@@ -189,7 +189,7 @@ hr {
 </div>
 <div class="col">
     <label >Pan Card no.</label>
-    <input type="text" name="pancardno" placeholder="Pan Card No." size="10"/ required>
+    <input type="text" name="pancardno" placeholder="Pan Card No." maxlength="10" pattern="\d{10}" title="Please enter exactly 10 digits" / required>
 </div>
 </div> 
     </form>
