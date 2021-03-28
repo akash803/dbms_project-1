@@ -100,7 +100,7 @@ hr {
       transform: translate(-50%, -50%);
     }
     body  {
-  background-image: url("./img8.jpg");
+  background-image: url("./img15.jpg");
   background-size: cover;
   background-color: #b9bb4c;
   color: #DCDCDC;
@@ -133,10 +133,10 @@ hr {
 
     <h4>
   MyEmployeeManager 
-  <a href = "login1.html" style = "float : right">
+  <a href = "login1" style = "float : right">
     Logout 
   </a>
-  <a href = "login2.html"  style = "float : right" >
+  <a href = "login2"  style = "float : right" >
     Home    
   </a>
   
@@ -147,7 +147,7 @@ hr {
     <br>
 
     <h2><b>Employee Grade Details</b></h2>
-    <form method="POST" action="./login8.html" >
+    <form method="POST" action="login8" >
         <div class="container">
             <div class="row">
                 <div class="col">
@@ -171,16 +171,15 @@ hr {
             </div>
             </div>
     </form>
-    <script>
 
-    var modal = document.getElementById('id01');
-    
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-    </script>
-    
+    <script>
+    <% if (error == 'Error') { %> 
+          window.alert('Error in Data Please Recheck');
+    <% } %> 
+    <% if (error == 'Done') { %> 
+          window.alert('Employee Grade has been inserted');
+    <% } %> 
+    </script>   
+
     </body>
     </html>

@@ -15,12 +15,16 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 app.use(express.json());       // to support JSON-encoded bodies
 app.use(express.urlencoded()); // to support URL-encoded bodies
 
+app.set('view engine','ejs'); 
+app.engine('ejs', require('ejs').__express);     // EJS
+
+
 //MYSQL
 //Remember to add your own data!!!!!!!!!!!!!
 var con=mysql.createConnection({
   host: "localhost",
-  user: "root",
-  password: "",
+  user: "ZerothKing",
+  password: "Sj@19012002",
   database: "project"
 });
 
@@ -37,11 +41,11 @@ httpServer = http.Server(app);
 console.log(__dirname);
 app.use(express.static(__dirname + '/images'));
 
-app.get('/login1.html', function(req, res) {
-  res.sendFile(__dirname + '/login1.html');
+app.get('/login1', function(req, res) {
+  res.render('login1', {signupRequest : 'Success'});
 }); 
 
-app.post('/login1.html', (req,res) => {
+app.post('/login1', (req,res) => {
   
   var user, pass, p = '\0';
 	console.log("NO ERROR!!");
@@ -65,27 +69,27 @@ app.post('/login1.html', (req,res) => {
         }
       }
       if (p == pass) {
-        res.sendFile(path.join(__dirname,'login2.html'));
+        res.render('login2', {signupRequest : 'Success'});
         return console.log("CORRECT!!!");
       }
       else {
-        res.sendFile(path.join(__dirname,'login1.html'));
+        res.render('login1', {signupRequest : 'Error'});
         return console.log("WRONG!!!");
       }
     }
   });
 });
 
-app.get('/login2.html', function(req, res) {
-  res.sendFile(__dirname + '/login2.html');
+app.get('/login2', function(req, res) {
+  res.render('login2');
 });
 
-app.get('/login3.html', function(req, res) {
-  res.sendFile(__dirname + '/login3.html');
+app.get('/login3', function(req, res) {
+  res.render('login3', {error : 'None'});
 });
 
-app.post('/login3.html', (req,res) => {
-	console.log("NO ERROR!!");
+app.post('/login3', (req,res) => {
+	// console.log("NO ERROR!!");
 
   var title,name,city,state,pincode,phone,email,dob,pancardno,addr;
   title = req.body.employeeetitle;
@@ -96,28 +100,28 @@ app.post('/login3.html', (req,res) => {
   email = req.body.email;
   dob = req.body.DOB;
   pancardno = req.body.pancardno;
-  addr = req.body.address;
+  address = req.body.address;
   phone = req.body.phone;
 
   var sql = "INSERT INTO employee(emp_title,emp_name,emp_dob,emp_address,emp_city,emp_state,emp_pincode,emp_mobile_number,emp_pancard_number,emp_mail_id) values ('"+title+"','"+name+"','"+dob+"','"+address+"','"+city+"','"+state+"',"+pincode+",'"+phone+"','"+pancardno+"','"+email+"');"
   console.log(sql);
   con.query(sql, function (err, result, fields) {
     if (err){
-      // what should we do?
+      console.log(err);
+      res.render('login3', {error : 'Error'});
     }
     else{
-      // again, do what?
-      res.sendFile(os.join(__dirname,'login3.html'));
+      res.render('login3', {error : 'Done'});
       console.log("inserted row");
     }
   });
 });
 
-app.get('/login4.html', function(req, res) {
-  res.sendFile(__dirname + '/login4.html');
+app.get('/login4', function(req, res) {
+  res.render('login4', {error : 'None'});
 });
 
-app.post('/login4.html', (req,res) => {
+app.post('/login4', (req,res) => {
 	console.log("NO ERROR!!");
 
   var dept_name = req.body.dept_name;
@@ -128,21 +132,22 @@ app.post('/login4.html', (req,res) => {
 
   con.query(sql, function (err, result) {
     if (err){
-      // do what?
+      console.log(err);
+      res.render('login4', {error : 'Error'});
     }
     else{
       // do what?
       console.log("record inserted");
-      res.sendFile(path.join(__dirname,'login4.html'));
+      res.render('login4', {error : 'Done'});
     }
   });
 });
 
-app.get('/login5.html', function(req, res) {
-  res.sendFile(__dirname + '/login5.html');
+app.get('/login5', function(req, res) {
+  res.render('login5', {error : 'None'});
 });
 
-app.post('/login5.html',(req,res)=>{
+app.post('/login5',(req,res)=>{
   console.log("NO ERROR!!");
 
   var name = req.body.gradename;
@@ -160,20 +165,20 @@ app.post('/login5.html',(req,res)=>{
   console.log(sql);
   con.query(sql,function(err,result,fields){
     if (err){
-      // do what?
+      res.render('login5', {error : 'Error'});
     }
     else{
-      res.sendFile(path.join(__dirname,'login5.html'));
+      res.render('login5', {error : 'Done'});
       console.log('inserted row');
     }
   });
 });
 
-app.get('/login7.html', function(req, res) {
-  res.sendFile(__dirname + '/login7.html');
+app.get('/login7', function(req, res) {
+  res.render('login7', {error : 'None'});
 });
 
-app.post('/login7.html',(req,res)=>{
+app.post('/login7',(req,res)=>{
   console.log("NO ERROR!!");
 
   var e_id = req.body.e_id;
@@ -182,11 +187,11 @@ app.post('/login7.html',(req,res)=>{
   var sql1 = "SELECT * FROM dept join (emp_grade join grade on emp_grade.emp_grade_id = grade.grade_id) on emp_grade.emp_dept_id = dept.dept_id where emp_id = "+e_id+";";
 });
 
-app.get('/login8.html', function(req, res) {
-  res.sendFile(__dirname + '/login8.html');
+app.get('/login8', function(req, res) {
+  res.render('login8', {error : 'None'});
 });
 
-app.post('/login8.html',function(req,res){
+app.post('/login8',function(req,res){
   console.log("NO ERROR!!");
 
   var e_id = req.body.e_id;
@@ -200,11 +205,10 @@ app.post('/login8.html',function(req,res){
 
   con.query(sql,function(err,result,fields){
     if (err){
-      // do what?
+      res.render('login8', {error : 'Error'});
     }
     else{
-      // do what?
-      res.sendFile(path.join(__dirname,'login8.html'));
+      res.render('login8', {error : 'Done'});
       console.log(result);
     }
   });
