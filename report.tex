@@ -172,6 +172,8 @@ The menu page allows the admin to navigate across various features available. Th
     \item Specify pay grade and department of a particular employee
     \item Generate the payroll for a particular employee
 \end{itemize}
+
+\newline  In each webpages we first create a simple form using HTML. Then after we do styling using CSS and simple BOOTSTRAP.And we made input field according to the database and also we check the data validation after each input filled.
 Each of these functions have their own page and every page has options to go back to the navigation page or logout of the application.
 \newline
 \newline
@@ -206,14 +208,6 @@ For example, consider the flow of control involved in adding a new department.
 \end{enumerate}
 A similar procedure is followed for all the other pages. The only page that does not perform an insertion to the database is the login page. Here the query is a select statement and only fetched the password of the username that has been entered. If there is a match, the user is authorized, else an error is displayed.
 
-\newpage
-\noindent
-\textbf{Integration of Back end and Front end:}
-\newline\newline
-The integration of back end and front end was done using embedded JavaScript also called as EJS.
-\item Login page used EJS to tell the user if the username and password was correct. After checking with the back end appropriate alert was generated.
-\item All the pages where we inserted the data also used EJS to notify the user if the inserted data was correct of if there was any mistake.
-\item EJS was extensively used in generating the payroll report. The data was accepted from the user and using SQL queries the payroll was generated which was then sent to the user using EJS 
 
 \newpage                % Don't delete
 \section{ER Diagram}    % Don't delete
@@ -426,13 +420,6 @@ app.post('/login3', (req,res) => {
 \begin{figure}
     \centering
     \includegraphics[width = \columnwidth]{screenshots/generatereportpage.png}
-    \caption{Generate Report Page}
-    \label{fig:my_label}
-\end{figure}
-
-\begin{figure}
-    \centering
-    \includegraphics[width = \columnwidth]{screenshots/generatereportinsertion.jpeg}
     \caption{Generate Report Page}
     \label{fig:my_label}
 \end{figure}
