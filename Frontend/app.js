@@ -83,7 +83,6 @@ app.post('/login1', (req,res) => {
 app.get('/login2', function(req, res) {
   res.render('login2');
 });
-
 app.get('/login3', function(req, res) {
   res.render('login3', {error : 'None'});
 });
@@ -111,8 +110,9 @@ app.post('/login3', (req,res) => {
       res.render('login3', {error : 'Error'});
     }
     else{
+      console.log(fields);
       res.render('login3', {error : 'Done'});
-      console.log("inserted row");
+      // console.log("inserted row");
     }
   });
 });
@@ -174,8 +174,39 @@ app.post('/login5',(req,res)=>{
   });
 });
 
+var data = {
+    dept_id : 0,
+    dept_name : 'NULL',
+    emp_id : 0,
+    emp_grade_id : 0,
+    grade_name : 'NULL',
+    grade_short_name : 'NULL',
+    grade_basic : 0,
+    grade_ta : 0,
+    grade_hra : 0,
+    grade_ma : 0,
+    grade_bonus : 0,
+    grade_pf : 0,
+    grade_pt : 0
+  }
+
+// JSON.stringify(data);
+// data = JSON.parse(data);
 app.get('/login7', function(req, res) {
-  res.render('login7', {error : 'None'});
+  res.render('login7',{ data : {dept_id : 0,
+    dept_name : 'NULL',
+    emp_id : 0,
+    emp_grade_id : 0,
+    grade_name : 'NULL',
+    grade_short_name : 'NULL',
+    grade_basic : 0,
+    grade_ta : 0,
+    grade_hra : 0,
+    grade_ma : 0,
+    grade_bonus : 0,
+    grade_pf : 0,
+    grade_pt : 0
+}});
 });
 
 app.post('/login7',(req,res)=>{
@@ -185,7 +216,18 @@ app.post('/login7',(req,res)=>{
   console.log(e_id);
 
   var sql1 = "SELECT * FROM dept join (emp_grade join grade on emp_grade.emp_grade_id = grade.grade_id) on emp_grade.emp_dept_id = dept.dept_id where emp_id = "+e_id+";";
-  
+
+  con.query(sql1,function(err,result,fields){
+    // obj = {data : result[0]};
+    if (err){
+      res.render('login7', {data : result[0]});
+    }
+    else{
+      res.render('login7', {data : result[0]});
+      console.log(data);
+    }
+  });  
+
 });
 
 app.get('/login8', function(req, res) {
