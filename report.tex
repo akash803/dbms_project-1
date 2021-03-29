@@ -20,6 +20,7 @@
 \usepackage{epsf}
 \usepackage{epstopdf}
 \usepackage{subfigure} 
+\usepackage{subfig}
 \usepackage{colortbl}
 \usepackage{longtable}
 \usepackage{enumerate}
@@ -49,6 +50,10 @@
  total={170mm,257mm},
  left=20mm,
  top=20mm,
+ }
+ 
+ \lstset{
+    breaklines = true
  }
 
 \usepackage{hyperref}
@@ -173,7 +178,7 @@ Each of these functions have their own page and every page has options to go bac
 The first three features listed above are used to insert new information to the database. Specifying the pay grade and department of an employee depends on existing data, i.e. the employee, department and pay grade must already exist. The last feature also depends on existing data but the information added to the database is simply an indication that a payroll has been generated (new information is not added).
 \newpage
 \noindent
-\textbf{Front end description:}
+\textbf{Back end description:}
 \newline
 \newline
 The back end database is implemented using MySQL. The details of a table's attributes and the relations can be seen in the ER diagram.
@@ -217,25 +222,211 @@ From the ER diagram, the attributes corresponding to each entity can be seen. Th
 
 \newpage                            % Don't delete
 \section{Source Code}               % Don't delete
-
-\hl{Enclose the source code of your front end and back end separately.}
+\textbf{Front end:}
+\noindent
+\newline
+The following is a snippet from the "Add New Employee" page that is used to input data from the user. The form element sends the data through a post request when the submit button is clicked. This triggers a SQL query in the backend code as depicted in the next page.
+\begin{lstlisting}[language = html]
+<form name="form3" action="login3" method="post">  
+<div class="container">  
+<center>  <h2> <b>Employee Details</b></h2> </center>  
+<hr> 
+<div class="row">
+<div class="col">
+    <label> <b>Employee Title</b> </label>   
+    <input type="text" name="employeetitle" placeholder= "EmployeeTitle" size="15" required />
+</div>
+<div class="col">
+  <label> <b>Employee Name</b> </label>   
+  <input type="text" name="employeename" placeholder="Employeename" size="15" required />   
+</div>
+</div>
+<div class="row">
+<div class="col">
+   <b>Current Address</b>
+   <input type="text" name="address" placeholder="Enter your Address" style="width: 500px;height: 150px;" / required/></input>
+</div>
+<div class="col">
+  <label> <b>City</b></label>    
+  <input type="text" name="city" placeholder="City" size="15"required />   
+</div>
+</div>
+<div class="row">
+    <div class="col">
+    <label> <b>State</b> </label>    
+    <input type="text" name="state" placeholder="State" size="15"required /> 
+</div>
+<div class="col">
+  <label> <b>Pincode</b> </label>    
+  <input type="text" name="pincode" placeholder="Pincode" maxlength="6" pattern="\d{6}" title="Please enter exactly 7 digits" / required >  
+</div>
+</div>
+<div class="row">
+<div class="col">
+  <label>   
+  <b>Phone</b>  
+  </label>  
+  <input type="text" name="phone" placeholder="Enter your Contact number"  maxlength="10" pattern="\d{10}" title="Please enter exactly 10 digits" / required>   
+</div>
+<div class="col">
+    <label for="email"><b>Email</b></label>  
+    <input type="text" placeholder="ex:username@gmail.com" name="email" required>
+</div>
+</div>
+<div class="row">
+  <div class="col">
+  <label ><b>Date Of Birth</b></label>
+  <input type="date" name="DOB" placeholder="DD/MM/YYYY" size="10"/ required>
+</div>
+<div class="col">
+  <label ><b>Pan Card no.</b></label>
+  <input type="text" name="pancardno" placeholder="Pan Card No." maxlength="10" pattern="\d{10}" title="Please enter exactly 10 digits" / required>
+</div>
+</div> 
+<div class="row">
+<div class="col">
+    <button type="submit" class="registerbtn">Submit</button> 
+</div>
+<div class="col">
+    <button type="clear" class="cancelbtn">Clear</button> 
+</div>
+</div>
+</form> 
+\end{lstlisting}
+\newpage
+\noindent
+\textbf{Back End:}
+\begin{lstlisting}[language = javascript]
+app.get('/login3', function(req, res) {
+  res.render('login3', {error : 'None'});
+});
+app.post('/login3', (req,res) => {
+  var title,name,city,state,pincode,phone,email,dob,pancardno,addr;
+  title = req.body.employeetitle;
+  name = req.body.employeename;
+  city = req.body.city;
+  state = req.body.state;
+  pincode = req.body.pincode;
+  email = req.body.email;
+  dob = req.body.DOB;
+  pancardno = req.body.pancardno;
+  address = req.body.address;
+  phone = req.body.phone;
+  var sql = "INSERT INTO employee(emp_title,emp_name,emp_dob,emp_address,emp_city,emp_state,emp_pincode,emp_mobile_number,emp_pancard_number,emp_mail_id) values ('"+title+"','"+name+"','"+dob+"','"+address+"','"+city+"','"+state+"',"+pincode+",'"+phone+"','"+pancardno+"','"+email+"');"
+  console.log(sql);
+  con.query(sql, function (err, result, fields) {
+    if (err){
+      console.log(err);
+      res.render('login3', {error : 'Error'});
+    }
+    else{
+      console.log(fields);
+      res.render('login3', {error : 'Done'});
+      // console.log("inserted row");
+    }
+  });
+});
+\end{lstlisting}
 
 \newpage            % Don't delete
 \section{Results}   % Don't delete
 
-\hl{Enclose the snapshots of your results.}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width = \columnwidth]{screenshots/loginpage1.png}
+    \caption{Login Page}
+    \label{fig:my_label}
+\end{figure}
 
 \begin{figure}[h!]
     \centering
-    %\includegraphics[width = \columnwidth]{output.png} % Here output.png is the file name of your snapshot. So, change only output.png with your file name and \caption{} to give some name. Don't touch other lines between \begin{figure} and \end{figure}
-    %\caption{Factorial of a input number}
+    \includegraphics[width = \columnwidth]{screenshots/loginpage2.png}
+    \caption{Login Credentials}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = \columnwidth]{screenshots/loginsql.png}
+    \caption{Admin Table}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = \columnwidth]{screenshots/navigationpage.png}
+    \caption{Navigation Page}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = \columnwidth]{screenshots/addnewemployeepage.png}
+    \caption{Add New Employee Page}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = \columnwidth]{screenshots/addnewemployeesql.png}
+    \caption{Employee Table}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = \columnwidth]{screenshots/addnewdeptpage.png}
+    \caption{Add New Department Page}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = \columnwidth]{screenshots/addnewdeptsql.png}
+    \caption{Dept Table}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = \columnwidth]{screenshots/addnewgradepage.png}
+    \caption{Add New Grade Page}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = \columnwidth]{screenshots/addnewgradesql.png}
+    \caption{Grade Table}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = \columnwidth]{screenshots/addempgradepage.png}
+    \caption{Add Employee Grade Page}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = \columnwidth]{screenshots/addempgradesql.png}
+    \caption{Emp\_grade Table}
+    \label{fig:my_label}
+\end{figure}
+
+\begin{figure}
+    \centering
+    \includegraphics[width = \columnwidth]{screenshots/generatereportpage.png}
+    \caption{Generate Report Page}
+    \label{fig:my_label}
 \end{figure}
 
 \newpage
 \section{References:}
 \begin{enumerate}
-    \item http://services.lovelycoding.org/hotel-management-system/
-    \item https://1000projects.org/hotel-management-system-project.html
+    \item 
+    \item 
 \end{enumerate}
 
 
