@@ -147,7 +147,7 @@ hr {
 </h4> 
 <h1><b>Generate Report</b> </h1>
 
-<form>  
+<form name="form7" action="login7" method="post">
     <div class="container">  
     <center>  <h2><b>Employee Report Details</b></h2> </center>  
     <hr>  
@@ -170,15 +170,61 @@ hr {
 </div>
   </form>  
 
+
+<table id="table" border="1">  
+         <!-- <thead>  
+            <tr>  
+                <th>Username</th>  
+                <th>Password</th>  
+            </tr>  --> 
+
+       
+        <tr>
+            <th>dept_id</th>
+            <th>dept_name</th>
+            <th>emp_id</th>
+            <th>emp_grade_id</th>
+            <th>grade_name</th>
+            <th>grade_short_name</th>
+            <th>grade_basic</th>
+            <th>grade_ta</th>
+            <th>grade_hra</th>
+            <th>grade_ma</th>
+            <th>grade_bonus</th>
+            <th>grade_pf</th>
+            <th>grade_pt</th>
+        </tr>
+        </thead>  
+         <tbody> 
+            <%
+            if(typeof data !== undefined){
+            var i=1;
+            %>
+            <tr>   
+                <td><%= data.dept_id %></td>
+                <td><%= data.dept_name %></td>
+                <td><%= data.emp_id %></td>
+                <td><%= data.emp_grade_id %></td>
+                <td><%= data.grade_name %></td>
+                <td><%= data.grade_short_name %></td>
+                <td><%= data.grade_basic %></td>
+                <td><%= data.grade_ta %></td>
+                <td><%= data.grade_hra %></td>
+                <td><%= data.grade_ma %></td>
+                <td><%= data.grade_bonus %></td>
+                <td><%= data.grade_pf %></td>
+                <td><%= data.grade_pt %></td>
+            </tr> 
+            <%  i++; } else{ %>
+            <tr>
+                <td colspan="13">No Data Found</td>
+            </tr>                                  
+         <% } %>
+         </tbody>
+</table> 
+
 <script>
 
-var modal = document.getElementById('id01');
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
 </script>
 
 </body>
