@@ -92,7 +92,7 @@ app.post('/login3', (req,res) => {
 	// console.log("NO ERROR!!");
 
   var title,name,city,state,pincode,phone,email,dob,pancardno,addr;
-  title = req.body.employeeetitle;
+  title = req.body.employeetitle;
   name = req.body.employeename;
   city = req.body.city;
   state = req.body.state;
@@ -185,6 +185,7 @@ app.post('/login7',(req,res)=>{
   console.log(e_id);
 
   var sql1 = "SELECT * FROM dept join (emp_grade join grade on emp_grade.emp_grade_id = grade.grade_id) on emp_grade.emp_dept_id = dept.dept_id where emp_id = "+e_id+";";
+  
 });
 
 app.get('/login8', function(req, res) {
