@@ -81,7 +81,7 @@ app.post('/login1', (req,res) => {
 });
 
 app.get('/login2', function(req, res) {
-  res.render('login2');
+  res.render('login2', {signupRequest : 'Error'});
 });
 app.get('/login3', function(req, res) {
   res.render('login3', {error : 'None'});
@@ -193,6 +193,7 @@ var data = {
 // JSON.stringify(data);
 // data = JSON.parse(data);
 app.get('/login7', function(req, res) {
+  console.log("Get Req");
   res.render('login7',{ data : {dept_id : 0,
     dept_name : 'NULL',
     emp_id : 0,
@@ -206,7 +207,7 @@ app.get('/login7', function(req, res) {
     grade_bonus : 0,
     grade_pf : 0,
     grade_pt : 0
-}});
+}, error : 'None'});
 });
 
 app.post('/login7',(req,res)=>{
@@ -219,12 +220,16 @@ app.post('/login7',(req,res)=>{
 
   con.query(sql1,function(err,result,fields){
     // obj = {data : result[0]};
+    console.log(result);
+    console.log(result[0]);
     if (err){
-      res.render('login7', {data : result[0]});
+      res.render('login7', {data : result[0], error : 'Error'});
     }
     else{
-      res.render('login7', {data : result[0]});
-      console.log(data);
+      if (result.length == 0) {
+          res.render('login7', {data : data, error : 'Dis'});
+      }
+      else res.render('login7', {data : result[0], error : 'Done'});
     }
   });  
 

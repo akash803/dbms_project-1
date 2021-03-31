@@ -15,6 +15,7 @@
 }
 .container {
     padding: 50px;
+
 }
 
 input[type=text], input[type=password], textarea {
@@ -30,8 +31,9 @@ input[type=text]:focus, input[type=password]:focus {
   outline: none;
 }
  div {
+  
   padding: 25px 50px;
- 
+  
 }
 hr {
   border: 1px solid #f1f1f1;
@@ -64,6 +66,7 @@ hr {
 .cancelbtn:hover {
   opacity: 1;
 }
+
     @-webkit-keyframes animatezoom {
       from {-webkit-transform: scale(0)} 
       to {-webkit-transform: scale(1)}
@@ -99,11 +102,11 @@ hr {
       transform: translate(-50%, -50%);
     }
     body  {
-  background-image: url("./img9.jpg");
-  
+  background-image: url("./img100.jpg");
+  background-size: cover;
   background-color: #b9bb4c;
   color : white;
-}
+  }
     h1 {
       font-size: 50px;
     }
@@ -113,11 +116,11 @@ hr {
     h3 {
       font-size: 30px;
     }
-   h4{
+    h4{
       font-size: 20px;
       border: 1px solid black;
      padding: 20px 40px;
-     
+      
       background-color:black;
       color : white;
     }
@@ -126,11 +129,11 @@ hr {
     h3 {text-align: center;}
     p {text-align: center;}
     div {text-align: center;}
-    span{text-align: right;}
-    a{padding-right:  5px; color :white;}
+     a{padding-right:  5px; color: white;}
 </style>
 </head>
 <body>
+
 
 <h4>
   MyEmployeeManager 
@@ -142,88 +145,35 @@ hr {
   </a>
 
 </h4> 
-<h1><b>Add New Employee</b></h1>
+<h1><b>Generate Report</b> </h1>
 
-<form name="form3" action="login3" method="post">  
+<form name="form7" action="login7" method="post">  
     <div class="container">  
-    <center>  <h2> <b>Employee Details</b></h2> </center>  
-    <hr> 
+    <center>  <h2><b>Employee Report Details</b></h2> </center>  
+    <hr>  
+
     <div class="row">
         <div class="col">
-    <label> <b>Employee Title</b> </label>   
-  <input type="text" name="employeetitle" placeholder= "EmployeeTitle" size="15" required />   
-  </div>
-  <div class="col">
-  <label> <b>Employee Name</b> </label>   
-  <input type="text" name="employeename" placeholder="Employeename" size="15" required />   
-  </div>
-  </div>
-   
-  <div class="row">
-    <div class="col">
-   <b>Current Address</b>
-  <input type="text" name="address" placeholder="Enter your Address" style="width: 500px;height: 150px;" / required/>  
-    </input>  
+  <label> <b>Employee ID</b> </label>   
+  <input type="text" name="e_id" placeholder= "Enter Employee ID.." size="15" required />   
 </div>
-<div class="col">
-  <label> <b>City</b></label>    
-  <input type="text" name="city" placeholder="City" size="15"required />   
+
 </div>
-</div>
+
+
 
 <div class="row">
     <div class="col">
-  <label> <b>State</b> </label>    
-  <input type="text" name="state" placeholder="State" size="15"required /> 
+    <button type="submit" class="registerbtn">Submit</button> 
 </div>
-<div class="col">
-  <label> <b>Pincode</b> </label>    
-  <input type="text" name="pincode" placeholder="Pincode" maxlength="6" pattern="\d{6}" title="Please enter exactly 7 digits" / required >  
+
 </div>
-</div>
-  
-<div class="row">
-    <div class="col">
-  <label>   
-    <b>Phone</b>  
-    </label>  
-    <input type="text" name="phone" placeholder="Enter your Contact number"  maxlength="10" pattern="\d{10}" title="Please enter exactly 10 digits" / required>   
-  
-</div>
-<div class="col">
-    <label for="email"><b>Email</b></label>  
-    <input type="text" placeholder="ex:username@gmail.com" name="email" required>
-</div>
-</div>
-    
-<div class="row">
-  <div class="col">
-    <label ><b>Date Of Birth</b></label>
-    <input type="date" name="DOB" placeholder="DD/MM/YYYY" size="10"/ required>
-</div>
-<div class="col">
-    <label ><b>Pan Card no.</b></label>
-    <input type="text" name="pancardno" placeholder="Pan Card No." maxlength="10" pattern="\d{10}" title="Please enter exactly 10 digits" / required>
-</div>
-</div> 
-  
-    <div class="row">
-      <div class="col">
-      <button type="submit" class="registerbtn">Submit</button> 
-  </div>
-  <div class="col">
-      <button type="clear" class="cancelbtn">Clear</button> 
-  </div>
-  </div>
   </form>  
 
 <script>
- <% if (error == 'Error') { %> 
+  <% if (print == 'Error') { %> 
           window.alert('Wrong Data Inserted. Please Recheck');
-    <% } %> 
-  <% if (error == 'Done') { %> 
-          window.alert('Inserted the data!!');
-    <% } %> 
+    <% } %>
 </script>
 
 </body>
