@@ -43,6 +43,7 @@
 \usepackage{tablefootnote}
 \usepackage{url}
 \usepackage{geometry}
+\usepackage{listings}
  \geometry{
  a4paper,
  total={170mm,257mm},
@@ -69,10 +70,14 @@
 
 % ------------ Don't modify anything up to here ---------------
 
-% From here on-wards modify only the relevant fields, such as Title (line no. 76), "Section:", "Course Instructor:", and "Team Members:" field. (Team Members details should be in the format such as, name, reg. no., mobile no. and email id.). Further, "Title:" can be changed as per your selected topic name. In the brief description field you can describe your topic in 250 words. Additionally, in the "Key Feature:" field add your mini-project feature as an item (example is shown). AT the end in the "Reference:" field add the website/paper/article referred for this mini-project as an item.
+% From here on-wards modify only the relevant fields, such as Title (line no. 76), "Section:", "Course Instructor:", and "Team Members:" field. (Team Members details should be in the format such as, name, reg. no., mobile no. and email id.). Further, "Title:" can be changed as per your selected topic name. 
+
+% Follow the comments properly
+
+% All \hl{...} line at the end of report delete or comment it.
 
 \begin{center}
-    \textbf{\Large{Abstract \\
+    \textbf{\Large{Final Report \\
     (\textcolor{black}{Payroll Management System})}}
 \end{center}
 
@@ -95,6 +100,7 @@
 
 \vspace{0.25in}
 
+\section{Abstract}
 \noindent
 \textbf{Brief Description:}
 \newline
@@ -141,22 +147,105 @@ Overall, this software has been designed specifically to cater to a company's em
 \end{enumerate}
 \textbf{Software Specifications:}
 \begin{itemize}
-    \item Frontend: HTML, CSS, JavaScript(React Framework) 
-    \item Backend: Node.js, MySQL
+    \item Frontend: HTML, CSS, JavaScript(EJS as template engine)
+    \item Backend: Node.js, Express(A framework of Node.js), MySQL
 \end{itemize}
 
+\newpage                % Don't delete
+\section{Introduction}  % Don't delete
+\textbf{Front end description:}
+\newline
+\newline
+The front end consists of seven pages for user interactions, data verification, insertion and display. The first page is a login page used to verify an administrator's credentials since unauthorized personnel cannot perform any operations on the data stored in the back end. Once an admin has successfully logged in, they land on the menu page.
+\newline
+\newline
+The menu page allows the admin to navigate across various features available. These include the following :
+\begin{itemize}
+    \item Add new employee
+    \item Add new department
+    \item Add new pay grade
+    \item Specify pay grade and department of a particular employee
+    \item Generate the payroll for a particular employee
+\end{itemize}
+Each of these functions have their own page and every page has options to go back to the navigation page or logout of the application.
+\newline
+\newline
+The first three features listed above are used to insert new information to the database. Specifying the pay grade and department of an employee depends on existing data, i.e. the employee, department and pay grade must already exist. The last feature also depends on existing data but the information added to the database is simply an indication that a payroll has been generated (new information is not added).
+\newpage
 \noindent
-\textbf{References:}
+\textbf{Back end description:}
+\newline
+\newline
+The back end database is implemented using MySQL. The details of a table's attributes and the relations can be seen in the ER diagram.
+\begin{itemize}
+    \item The “admin” entity is used to store information on the administrators who have access to the database. This includes their username and password.
+    \item The employee entity is used only to store an employee’s personal information.
+    \item The grade entity is used to store information on the components of the salary associated with a pay grade.
+    \item The department entity is used to keep track of the department comprising the company
+    \item The emp-grade is a relation that maps an employee to a pay grade and department.
+    \item The transaction entity contains details on payrolls generated for every employee and their corresponding department and pay grade when the payroll was generated.
+\end{itemize}
+Before any data or interaction can be done, we establish an HTML server as well as a connection to the database stored locally on our system. 
+\newline
+\newline
+The various operations on the data are done using Node.js. Whenever information entered on a page is submitted, the form responsible for collecting that information sends a post request. This request is then parsed to get the corresponding input fields. Using these fields, a SQL query is created and made to the database through the previously established connection.
+\newline
+\newline
+For example, consider the flow of control involved in adding a new department. 
 \begin{enumerate}
-    \item\href{https://github.com/fenil29/employee-management-system-frontend-react}{Sample code base for frontend}
-    \item\href{https://github.com/fenil29/employee-management-system-backend-node}{Sample Code base for backend}
-    \item\href{https://github.com/silentarrowz/payroll-react}{Sample code base using create react app}
-    \item\href{https://medium.com/valtech-ch/setup-a-rest-api-with-sequelize-and-express-js-fae06d08c0a7}{REST Api to connect frontend to backend}
-    \item\href{https://reactjs.org/tutorial/tutorial.html}{React API tutorial}
-    \item\href{https://www.mysqltutorial.org/mysql-nodejs/connect/}{Connecting MySQL using Node.js}
-    \item\href{https://www.w3schools.com/nodejs/}{Node.js tutorial}
-    
+    \item The administrator navigates to the “Add new department” page, types a department name and clicks submit.
+    \item This results in a post request corresponding to the URL of this page. The information in the input field i.e. dept-name is parsed from the body of the request.
+    \item This is then used to generate an SQL query as “INSERT INTO dept(dept-name) values ('"+dept-name+"');” and is sent to the server.
+    \item The server tries to execute the query.
+    \item If there are no errors, an appropriate message along with the inserted row is displayed. Else an alert is raised that an error has occurred.
 \end{enumerate}
+A similar procedure is followed for all the other pages. The only page that does not perform an insertion to the database is the login page. Here the query is a select statement and only fetched the password of the username that has been entered. If there is a match, the user is authorized, else an error is displayed.
+
+\newpage
+\noindent
+\textbf{Integration of Back end and Front end:}
+\newline\newline
+The integration of back end and front end was done using embedded JavaScript also called as EJS.
+\item Login page used EJS to tell the user if the username and password was correct. After checking with the back end appropriate alert was generated.
+\item All the pages where we inserted the data also used EJS to notify the user if the inserted data was correct of if there was any mistake.
+\item EJS was extensively used in generating the payroll report. The data was accepted from the user and using SQL queries the payroll was generated which was then sent to the user using EJS. 
+
+\newpage                % Don't delete
+\section{ER Diagram}    % Don't delete
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width = \columnwidth]{er_diagram.png}
+    \caption{Entity Relation Diagram}
+    \label{fig:my_label}
+\end{figure}
+\noindent
+From the ER diagram, the attributes corresponding to each entity can be seen. The foreign and primary key constraints applied on the tables have been highlighted as well. ( PK = Primary key, FK = Foreign key).
+
+
+\newpage                            % Don't delete
+\section{Source Code}               % Don't delete
+
+\hl{Enclose the source code of your front end and back end separately.}
+
+\newpage            % Don't delete
+\section{Results}   % Don't delete
+
+\hl{Enclose the snapshots of your results.}
+
+\begin{figure}[h!]
+    \centering
+    %\includegraphics[width = \columnwidth]{output.png} % Here output.png is the file name of your snapshot. So, change only output.png with your file name and \caption{} to give some name. Don't touch other lines between \begin{figure} and \end{figure}
+    %\caption{Factorial of a input number}
+\end{figure}
+
+\newpage
+\section{References:}
+\begin{enumerate}
+    \item http://services.lovelycoding.org/hotel-management-system/
+    \item https://1000projects.org/hotel-management-system-project.html
+\end{enumerate}
+
 
 \begin{center}
     \textbf{**** END ****}
