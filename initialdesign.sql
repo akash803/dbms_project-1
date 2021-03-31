@@ -49,12 +49,3 @@ create table emp_grade(
     foreign key (emp_grade_id) references grade(grade_id)
 );
 
-create table transaction(
-	transaction_id int primary key auto_increment,
-    emp_id int,
-    emp_dept_id int,
-    emp_grade_id int,
-    foreign key (emp_id) references employee(emp_id),
-    foreign key (emp_dept_id) references dept(dept_id),
-    foreign key (emp_grade_id) references grade(grade_id)
-);
