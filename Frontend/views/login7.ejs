@@ -224,7 +224,15 @@ hr {
 </table> 
 
 <script>
-
+  <% if (error == 'Error') { %> 
+          window.alert('BACKEND ERROR!!!');
+    <% } %> 
+  <% if (error == 'Done') { %> 
+          window.alert('The data is displayed in the table');
+    <% } %> 
+  <% if (error == 'Dis') { %> 
+          window.alert('There is no employee with this particular data who has a payroll!!!');
+    <% } %> 
 </script>
 
 </body>
